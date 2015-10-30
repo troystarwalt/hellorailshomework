@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Welcome, <%= @user.username %>.</h1>
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
@@ -15,11 +14,16 @@
   <%= @user.password %>
 </p>
 
-<div id="imageuploadform">	
-	<%= form_for @user, :url => user_path, :html => { :multipart => true } do |form| %>   
-	<%= form.file_field :avatar %>
+<p>
+	<strong>Your Avatar:</strong><% console %>
+	<% if @user.avatar_file_name.nil? %>
+	<div class="useravatar">
+	<p>You should upload an avatar.</p>
+	<% else %>
+	<%= image_tag @user.avatar.url(:medium) %>
+	</div>
 	<% end %>
-</div>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

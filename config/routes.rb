@@ -13,6 +13,12 @@ Rails.application.routes.draw do
 
   get '/search', to: 'users#search'
   get '/searchresults', to: 'users#searchresults'
+
+
+  get 'addimage' => 'users#newimage'
+
+  post 'addimage' => 'users#addimage'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

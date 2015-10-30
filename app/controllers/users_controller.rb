@@ -59,6 +59,7 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
 
   def search
   end
@@ -68,7 +69,14 @@ class UsersController < ApplicationController
     #todo -need to use ILIKE in postgres where strings are case sensitive
     @users = User.where("username LIKE ?", "%#{params[:username]}%")
   end
-  end
+
+  # def newimage
+  #   @newimage = 
+  # end
+  # def createimage
+  #   params.require(:bison).permit()
+  # end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -78,6 +86,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :avatar)
     end
 end

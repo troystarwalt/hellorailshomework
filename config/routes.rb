@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   resources :users
 
 
-  get 'sessions/new'
+  get 'session/new'
 
-  get    'login'   => 'sessions#new'
+  get    'login'   => 'session#new'
   
-  post   'login'   => 'sessions#create'
+  post   'login'   => 'session#create'
   
-  get 'logout'  => 'sessions#destroy'
+  get 'logout'  => 'session#destroy'
 
   get '/search', to: 'users#search'
   get '/searchresults', to: 'users#searchresults'

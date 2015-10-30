@@ -15,5 +15,11 @@
   <%= @user.password %>
 </p>
 
+<div id="imageuploadform">	
+	<%= form_for @user, :url => user_path, :html => { :multipart => true } do |form| %>   
+	<%= form.file_field :avatar %>
+	<% end %>
+</div>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

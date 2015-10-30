@@ -15,5 +15,5 @@ Post
 [x] - Delete Posts
 
 Session
-[] - Login
-[] - Logout
+[x] - Login
+[x] - Logout

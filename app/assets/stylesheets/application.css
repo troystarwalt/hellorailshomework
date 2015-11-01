@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ #set_width {
+ 	max-width: 700px;
+ }

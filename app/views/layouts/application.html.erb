@@ -7,32 +7,44 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<% if flash[:notice] %>
-	<div class="notice"><%= flash[:notice] %></div>
-	<% end %>
+	<div class="container">
+		<h1 class="site_headline"><%= link_to "This Is The Best App", root_path %> </h1>
+		<% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+		<% end %>
+		<nav>
+			<div>
+				<%= link_to "New Post", new_post_path %>
+				<% if !current_user %>
+				<%= link_to 'Sign Up', new_user_path %>
+				<% end %>
+				<%= link_to "See Users", users_path %>
+				<%= link_to "See Posts", posts_path %>
+				<%= link_to "Search", search_path %>
+			</div>
+		</nav>
 
-	<%= yield %>
+		<%= yield %>
 
-	<div>
-		<%= link_to "New Post", new_post_path %>
-		<%= link_to 'Sign Up', new_user_path %>
-		<%= link_to "See Users", users_path %>
-		<%= link_to "See Posts", posts_path %>
-		<%= link_to "Search", search_path %>
+
+
+		<div>
+			<% if current_user %>
+			<p>
+			<%= link_to "Log Out", logout_path %>
+			<% end %>
+			<% if !current_user %>
+			<%= link_to "Log In", login_path %>
+			<% end %>
+			<% if current_user %>
+			<%= link_to "Profile", current_user %></p>
+			<% end %>
+		</div>
+		<footer>
+		<div id="mainfooter">
+		<p>All Rights Reserved - Troy Starwalt</p>
+		</div>
+		</footer>
 	</div>
-
-	<div>
-		<% if current_user %>
-		<%= link_to "Log Out", logout_path %>
-		<% end %>
-		<% if !current_user %>
-		<%= link_to "Log In", login_path %>
-		<% end %>
-	</div>
-	<footer>
-		<% if current_user %>
-		<p><%= link_to "Profile", current_user %></p>
-		<% end %>
-	</footer>
 </body>
 </html>

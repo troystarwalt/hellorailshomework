@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+$(document).on("page:fetch", function(event){
+	//clicks += 1
+	console.log("NcDA.....kejkl page:fetch triggered! with", event);
+	document.bgColor = 'yellow';
+});
+
+$(document).on("page:receive", function(event){
+	console.log("nycda....page:receive", event);
+	document.bgColor = 'green';
+});
+

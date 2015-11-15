@@ -64,6 +64,11 @@ RSpec.describe UsersController, type: :controller do
       get :edit, id: 1
       expect(response).to have_http_status(:success)
     end
+
+    it "assigns the requested user as @user" do
+      get :edit, id: usercreate.id
+      expect(assigns(:user).id).to eq(1)
+    end
   end
 
 end

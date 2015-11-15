@@ -71,4 +71,29 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    context "valid attributes" do
+
+      it "returns http success" do
+        post :create, user: {user: usercreate}
+        expect(response).to have_http_status(302)
+      end
+      it " should create a new user " do
+        post :create, user: {user: user}
+        expect(user.email).to eq("candy@gmail.com")
+      end
+      it " Should redirect to a new page after creation" do
+        post :create, user: {user: user}
+        expect(response).to redirect_to("/users/2")  #expect(response).to redirect_to dog_path(assigns(:dog))
+      end
+    end
+
+    context "invalid attributes" do
+      it " should not create a new user" do
+        usercreate
+        post :create, user: {email: "candy@gmail.com"}
+        expect(User.last).to be nil
+      end
+    end
+  end
 end

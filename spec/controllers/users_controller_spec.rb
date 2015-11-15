@@ -12,6 +12,11 @@ RSpec.describe UsersController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+
+    it "show all users" do
+      get :index 
+      expect(user.username).to eq("CandyKane")
+    end
   end
 
   describe "GET #new" do
@@ -23,7 +28,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, user_id: 1
+      get :show, id: 1
       expect(response).to have_http_status(:success)
     end
   end
@@ -44,7 +49,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, id: 1
       expect(response).to have_http_status(:success)
     end
   end

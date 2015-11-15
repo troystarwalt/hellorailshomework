@@ -24,12 +24,24 @@ RSpec.describe UsersController, type: :controller do
       get :new
       expect(response).to have_http_status(:success)
     end
+
+    it "assigns a new user as @user" do
+      usercreate
+      get :new, {}
+      expect(assigns(:user)).to be_a(User)
+    end
+
   end
 
   describe "GET #show" do
     it "returns http success" do
       get :show, id: 1
       expect(response).to have_http_status(:success)
+    end
+
+    it "should assign requested user as @user" do
+      get :show, id: usercreate.id
+      expect(assigns(:user)).to eq(User.last)
     end
   end
 
